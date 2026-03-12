@@ -19,7 +19,6 @@ lib64/
 parts/
 sdist/
 var/
-.DS_Store
 wheels/
 share/python-wheels/
 *.egg-info/
@@ -88,7 +87,7 @@ ipython_config.py
 #   intended to run in multiple environments; otherwise, check them in:
 # .python-version
 
-# pipenv
+B# pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
 #   However, in case of collaboration, if having platform-specific dependencies or dependencies
 #   having no cross-platform support, pipenv may install dependencies that don't work, or not
@@ -206,3 +205,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# venv
+venv/
+
+#MacOS Specific
+.DS_Store
