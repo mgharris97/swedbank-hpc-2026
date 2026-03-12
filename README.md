@@ -31,10 +31,7 @@ cd swedbank-hpc-2026
 python -m venv venv
 source venv/bin/activate
 ```
-   On Windows
-```bash
- venv\Scripts\activate
-```
+   On Windows: ```venv\Scripts\activate```
 
 ### 3. Install dependencies
 ```bash
@@ -45,6 +42,10 @@ pip install -r requirements.txt
 Download the SMS dataset from Kaggle and place it in the `data/` folder.
 
 https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset
+
+### Note:
+Keep in mind, everytime you come back to work on this project, you need to reactivate the venv first: ```source venv/bin/activate ```
+
 
 
 
