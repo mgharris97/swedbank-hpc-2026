@@ -209,5 +209,8 @@ __marimo__/
 # venv
 venv/
 
-#MacOS Specific
+# MacOS Specific
 .DS_Store
+
+# data/ folder so that it stays empty on GitHub
+data/*
