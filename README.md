@@ -12,9 +12,10 @@ ML-powered SMS fraud detection system built with pandas, scikit-learn, fastAPI, 
 
 | Library | Purpose |
 |---|---|
+| numpy | Numerical operations and array handling |
 | pandas | Data loading and manipulation |
 | scikit-learn | ML model training and evaluation (Logistic Regression, Random Forest, etc.) |
-| matpolotlib | Data visualization |
+| matplotlib | Data visualization |
 | seaborn | Statistical data visualization |
 | FastAPI | API endpoint |
 | uvicorn | Server for running FastAPI |
