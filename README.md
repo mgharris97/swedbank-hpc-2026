@@ -41,7 +41,7 @@ pip install -r requirements.txt
 ### 4. Download the dataset
 Download the SMS dataset from Kaggle and place it in the `data/` folder.
 
-[SMS Spam Collection Dataset](https://archive.ics.uci.edu/dataset/228/sms+spam+collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection))
+[UC Irvine SMS Spam Collection Dataset from Kaggle](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
 
 ### Note:
 Keep in mind, every time you come back to work on this project, you need to reactivate the venv first: ```source venv/bin/activate ```
