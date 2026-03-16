@@ -48,6 +48,24 @@ Download the SMS dataset from Kaggle and place it in the `data/` folder locally 
 ### Note:
 Keep in mind, every time you come back to work on this project, you need to reactivate the venv first: ```source venv/bin/activate ```
 
+Your directory structure should look like this :)
+
+```
+├── data
+├── hpc
+│   └── job.slurm
+├── notebooks
+│   └── eda.ipynb
+├── requirements.txt
+├── src
+│   ├── api.py
+│   ├── model.py
+│   └── preprocess.py
+├── LICENSE
+├── README.md
+└── venv
+```
+
 
 
 
