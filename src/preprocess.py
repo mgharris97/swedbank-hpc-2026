@@ -1,17 +1,13 @@
 import re
 import pandas as pd
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_RAW_PATH = BASE_DIR / "data" / "spam.csv"
-DATA_PROCESSED_PATH = BASE_DIR / "data" / "processed" / "sms_clean.csv"
+from config import DATA_RAW_PATH, DATA_PROCESSED_PATH
 
 
 def load_data():
     df = pd.read_csv(DATA_RAW_PATH, encoding="latin-1")
     df = df[["v1", "v2"]]
-    df.columns = ["label", "text"]
-    df = df.dropna(subset=["text", "label"])
+    df.columns = ["label", "message"]
+    df = df.dropna(subset=["message", "label"])
     return df
 
 
@@ -32,7 +28,7 @@ def encode_labels(df):
 
 def remove_duplicates(df):
     before = len(df)
-    df = df.drop_duplicates(subset="text")
+    df = df.drop_duplicates(subset="message")
     after = len(df)
     print(f"Removed {before - after} duplicates. {after} rows remaining.")
     return df
@@ -48,7 +44,7 @@ def preprocess():
     # For debugging, display if preprocessing is running
     print("Starting preprocessing...")
     df = load_data()
-    df["text"] = df["text"].apply(clean_text)
+    df["message"] = df["message"].apply(clean_text)
     df = encode_labels(df)
     df = remove_duplicates(df)
     save_processed(df)
