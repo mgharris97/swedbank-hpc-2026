@@ -63,7 +63,8 @@ Your directory structure should look like this :)
 │   ├── api.py
 │   ├── model.py
 │   ├── evaluate.py
-│   └── preprocess.py
+│   ├── preprocess.py
+│   └── config.py
 ├── LICENSE
 ├── README.md
 └── venv
