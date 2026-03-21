@@ -27,6 +27,21 @@ def evaluate():
     print("\nClassification Report:")
     print(classification_report(y_test, y_pred, target_names=["Ham", "Spam"]))
 
+    cm = confusion_matrix(y_test, y_pred)
+    sns.heatmap(
+        cm,
+        annot=True,
+        fmt="d",
+        cmap="Blues",
+        xticklabels=["Ham", "Spam"],
+        yticklabels=["Ham", "Spam"],
+    )
+    plt.title("Confusion Matrix")
+    plt.ylabel("Actual")
+    plt.xlabel("Predicted")
+    plt.tight_layout()
+    plt.show()
+
 
 if __name__ == "__main__":
     evaluate()
