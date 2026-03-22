@@ -1,5 +1,5 @@
 ## HPC Cluster Setup (RTU)
->The python version on the cluster is too old for the dependencies so this is a workaround
+>The Python version on the cluster is too old for the dependencies, so this is a workaround.
 
 ### 1. Load Python module
 ```bash
@@ -21,7 +21,7 @@ source venv/bin/activate
 pip install pandas==2.0.3 scikit-learn joblib matplotlib seaborn fastapi uvicorn wordcloud
 ```
 
-### 4. Copy dataset to cluste from your local machine
+### 4. Copy dataset to cluster from your local machine
 Run the following in your terminal
 
 ```bash
