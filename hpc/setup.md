@@ -2,7 +2,9 @@
 >The python version on the cluster is too old for the dependencies so this is a workaround
 
 ### 1. Load Python module
+```bash
 module load python/3.9.19
+```
 
 ### 2. Clone the repo on the cluster
 
