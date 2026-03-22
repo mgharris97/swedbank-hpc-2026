@@ -21,8 +21,10 @@ source venv/bin/activate
 pip install pandas==2.0.3 scikit-learn joblib matplotlib seaborn fastapi uvicorn wordcloud
 ```
 
-### 4. Copy dataset to cluster from your local machine
-Run the following in your terminal
+### 4. Copy dataset to cluster from your local machine using SSH
+> First, you will need to create an ssh key and add it to the 'credentials' section of the HPC site. [Here's a guide](https://hpc-platforma.rtu.lv/hpc.html#ssh-access)
+
+After you can SSH into the cluster from your terminal, run the following in your terminal (repalce with your path. For example mine is: `~/Users/Matt/Documents/swedbank-hpc-2026/data/spam.csv`)
 
 ```bash
 scp ~/path/to/spam.csv hpc00523@ui-2.hpc.rtu.lv:~/swedbank-hpc-2026/data/
