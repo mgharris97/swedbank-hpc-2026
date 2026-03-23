@@ -56,6 +56,7 @@ Your directory structure should look like this :)
 │   └── (place dataset here)
 ├── hpc
 │   ├── grid_search.sh
+│   ├── grid_search.md
 |   └── setup.md
 ├── notebooks
 │   └── eda.ipynb
