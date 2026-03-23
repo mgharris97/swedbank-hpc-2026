@@ -14,7 +14,7 @@ the best model, we need to try them — many of them.
 
 A single model trains in seconds even on a local machine, making a cluster  unnecessary. But a grid search across four algorithms (Logistic Regression, Naive Bayes, SVM, Random Forest) with 5-fold cross validation produces upwards of 1,000 model trainings.
 
-To further demonstrate HPC necessity, we can also try 10-fold cross validation doubling the compute load to 2000+ model trainings. This makes the local vs HPC benchmark comparison more dramatic for the presentation.
+To further demonstrate HPC necessity, we can also try 10-fold cross validation doubling the compute load to 2000+ model trainings. This makes the local vs HPC benchmark comparison more dramatic for the presentation. Also, I'm just curious 👉👈
 
 
 
