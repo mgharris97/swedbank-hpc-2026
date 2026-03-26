@@ -31,27 +31,32 @@ models = {
     'LogisticRegression': {
         'model': LogisticRegression(max_iter=1000),
         'params': {
-            'C': [0.1, 1, 10, 100],
-            'solver': ['lbfgs', 'liblinear']
+            'C': [0.01, 0.1, 1, 10, 100, 1000],
+            'solver': ['lbfgs', 'liblinear', 'saga'],
+            'penalty': ['l1', 'l2']
         }
     },
     'NaiveBayes': {
         'model': MultinomialNB(),
         'params': {
-            'alpha': [0.1, 0.5, 1.0, 2.0]
+            'alpha': [0.01, 0.05, 0.1, 0.5, 1.0, 2.0, 5.0]
         }
     },
     'SVM': {
-        'model': LinearSVC(max_iter=1000),
+        'model': LinearSVC(max_iter=2000),
         'params': {
-            'C': [0.1, 1, 10, 100]
+            'C': [0.01, 0.1, 1, 10, 100, 1000],
+            'loss': ['hinge', 'squared_hinge'],
+            'tol': [1e-4, 1e-3, 1e-2]
         }
     },
     'RandomForest': {
         'model': RandomForestClassifier(),
         'params': {
-            'n_estimators': [100, 200, 300],
-            'max_depth': [None, 10, 20]
+            'n_estimators': [100, 200, 300, 500, 1000],
+            'max_depth': [None, 5, 10, 20, 30],
+            'min_samples_split': [2, 5, 10],
+            'max_features': ['sqrt', 'log2']
         }
     }
 }
