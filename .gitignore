@@ -215,3 +215,4 @@ venv/
 # data/ folder so that it stays empty on GitHub
 data/*
 models/*
+hpc/results/
