@@ -4,7 +4,6 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.svm import LinearSVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report
@@ -29,25 +28,17 @@ X_test_vec = vectorizer.transform(X_test)
 # Define models and parameter grids
 models = {
     'LogisticRegression': {
-        'model': LogisticRegression(max_iter=1000),
-        'params': {
-            'C': [0.01, 0.1, 1, 10, 100, 1000],
-            'solver': ['lbfgs', 'liblinear', 'saga'],
-            'penalty': ['l1', 'l2']
+    'model': LogisticRegression(max_iter=1000),
+    'params': {
+        'C': [0.01, 0.1, 1, 10, 100, 1000],
+        'solver': ['liblinear', 'saga'],
+        'penalty': ['l1', 'l2']
         }
     },
     'NaiveBayes': {
         'model': MultinomialNB(),
         'params': {
             'alpha': [0.01, 0.05, 0.1, 0.5, 1.0, 2.0, 5.0]
-        }
-    },
-    'SVM': {
-        'model': LinearSVC(max_iter=2000),
-        'params': {
-            'C': [0.01, 0.1, 1, 10, 100, 1000],
-            'loss': ['hinge', 'squared_hinge'],
-            'tol': [1e-4, 1e-3, 1e-2]
         }
     },
     'RandomForest': {
@@ -106,6 +97,21 @@ for r in results:
 # Save the best model (the one with the highest F1 score)
 best = max(results, key=lambda x: x['best_score'])
 print(f"\nBest overall model: {best['model']} with F1 of {best['best_score']}%")
+
+# Evaluate best model on test set
+best_config = models[best['model']]
+best_estimator = best_config['model'].set_params(**best['best_params'])
+best_estimator.fit(X_train_vec, y_train)
+y_pred = best_estimator.predict(X_test_vec)
+
+print("\nTest Set Evaluation:")
+print(classification_report(y_test, y_pred))
+
+# Save best model and vectorizer (we will need these saved so the api can load it to make predictions)
+MODELS_DIR.mkdir(exist_ok=True)
+joblib.dump(best_estimator, MODELS_DIR / 'model.pkl')
+joblib.dump(vectorizer, MODELS_DIR / 'vectorizer.pkl')
+print(f"Saved best model and vectorizer to {MODELS_DIR}")
 
 # Save results to file for presentation
 results_dir = Path(__file__).resolve().parent.parent / 'hpc' / 'results'
