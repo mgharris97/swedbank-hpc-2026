@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report
 from pathlib import Path
-from src.config import DATA_PROCESSED_PATH, MODELS_DIR
+from config import DATA_PROCESSED_PATH, MODELS_DIR
 
 df = pd.read_csv(DATA_PROCESSED_PATH)
 df = df.dropna(subset=['message'])
