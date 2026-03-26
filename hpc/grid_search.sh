@@ -3,7 +3,7 @@
 #PBS -l walltime=02:00:00
 #PBS -l select=1:ncpus=16:mem=16gb
 #PBS -j oe
-#PBS -o hpc/results/grid_search_output.txt
+#PBS -o grid_search_output.txt
 #PBS -A hpc_mt_00f65_hpcallocforgroup
 
 cd $PBS_O_WORKDIR
@@ -17,4 +17,4 @@ echo "CPUs requested: 16"
 
 python src/grid_search.py
 
-echo "Job finished: $(date)"
+echo "Job finished: $(date)" 
