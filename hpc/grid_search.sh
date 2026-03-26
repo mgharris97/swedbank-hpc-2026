@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -N grid_search
 #PBS -l walltime=02:00:00
-#PBS -l select=1:ncpus=16:mem=16gb:NodeType=cluster
+#PBS -l nodes=1:ppn=16
 #PBS -j oe
 #PBS -o /mnt/home/hpc00523/swedbank-hpc-2026/hpc/results/grid_search_output.txt
 #PBS -A hpc_mt_00f65_hpcallocforgroup
