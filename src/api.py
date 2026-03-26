@@ -14,8 +14,11 @@ from src.config import MODELS_DIR
 # e.g. "Congratulations! You have won a free iPhone. Click here to claim your prize now!"
 
 
-model = joblib.load(MODELS_DIR / 'model.pkl')
-vectorizer = joblib.load(MODELS_DIR / 'vectorizer.pkl')
+try:
+    model = joblib.load(MODELS_DIR / 'model.pkl')
+    vectorizer = joblib.load(MODELS_DIR / 'vectorizer.pkl')
+except FileNotFoundError as e:
+    raise RuntimeError("Model files not found. Run model.py or grid_search.py first to train and save the model.") from e
 
 app = FastAPI(title='sms fraud detection api')
 
@@ -28,18 +31,18 @@ def root():
     return{"status": "The endpoint is running"}
     
 @app.post("/classify")
-def classify_sms(request: SMSRequest): # incoming data must match smsrequest schema define above
-    # takes the incoming message and covnerts it to the TF-IDF numbers using the saved vectorizer
-    message_vec = vectorizer.transform([request.message]) 
-    
-    # take the vectorized message from above and run it through the model 
+def classify_sms(request: SMSRequest):  # incoming data must match smsrequest schema define above
+    # takes the incoming message and converts it to the TF-IDF numbers using the saved vectorizer
+    message_vec = vectorizer.transform([request.message])
+
+    # take the vectorized message from above and run it through the model
     # returns either 0 (ham) or 1 (spam)
     prediction = model.predict(message_vec)[0] # returns a list so [0] grabs the first result
-    # Return probability score for each class (ham, spam) that together add to 1.0
-    probability = model.predict_proba(message_vec)[0] #
-    
 
-    # Return block that returns the input message, whatevere the model decided it is, and the max of the two values rounded to 2 decimal places
+    # Return probability score for each class (ham, spam) that together add to 1.0
+    probability = model.predict_proba(message_vec)[0]
+
+    # Return block that returns the input message, whatever the model decided it is, and the max of the two values rounded to 2 decimal places
     return {
         "message": request.message,
         "prediction": "spam" if prediction == 1 else "ham",
