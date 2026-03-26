@@ -28,12 +28,8 @@ X_test_vec = vectorizer.transform(X_test)
 # Define models and parameter grids
 models = {
     "LogisticRegression": {
-        "model": LogisticRegression(max_iter=1000, class_weight="balanced"),
-        "params": {
-            "C": [0.01, 0.1, 1, 10, 100, 1000],
-            "solver": ["liblinear", "saga"],
-            "penalty": ["l1", "l2"],
-        },
+        "model": LogisticRegression(max_iter=5000, class_weight="balanced"),
+        "params": {"C": [0.01, 0.1, 1, 10, 100, 1000], "solver": ["liblinear", "saga"]},
     },
     "NaiveBayes": {
         "model": MultinomialNB(),
@@ -52,7 +48,6 @@ models = {
 
 # Run grid search
 results = []
-best_gs = None
 
 for name, config in models.items():
     print(f"\nRunning grid search for {name}...")
