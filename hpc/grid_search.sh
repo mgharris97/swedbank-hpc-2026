@@ -1,8 +1,7 @@
 #!/bin/bash
 #PBS -N grid_search
 #PBS -l walltime=02:00:00
-#PBS -l procs=32
-#PBS -l feature=vasara
+#PBS -l nodes=1:ppn=32,feature=vasara
 #PBS -j oe
 #PBS -o /mnt/home/hpc00523/swedbank-hpc-2026/hpc/results/grid_search_output.txt
 #PBS -A hpc_mt_00f65_hpcallocforgroup
