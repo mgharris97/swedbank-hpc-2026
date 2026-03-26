@@ -10,7 +10,8 @@ from sklearn.metrics import classification_report
 from pathlib import Path
 from config import DATA_PROCESSED_PATH, MODELS_DIR
 
-if __name__ == "__main__":
+
+def main():
 
     df = pd.read_csv(DATA_PROCESSED_PATH)
     df = df.dropna(subset=["message"])
@@ -31,7 +32,10 @@ if __name__ == "__main__":
     models = {
         "LogisticRegression": {
             "model": LogisticRegression(max_iter=5000, class_weight="balanced"),
-            "params": {"C": [0.01, 0.1, 1, 10, 100, 1000], "solver": ["liblinear", "saga"]},
+            "params": {
+                "C": [0.01, 0.1, 1, 10, 100, 1000],
+                "solver": ["liblinear", "saga"],
+            },
         },
         "NaiveBayes": {
             "model": MultinomialNB(),
@@ -117,3 +121,7 @@ if __name__ == "__main__":
             f.write(f"  Best F1 Score: {r['best_score']}%\n")
             f.write(f"  Best Params:   {r['best_params']}\n")
             f.write(f"  Time:          {r['time_seconds']}s\n\n")
+
+
+if __name__ == "__main__":
+    main()
