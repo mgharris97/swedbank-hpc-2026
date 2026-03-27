@@ -46,6 +46,16 @@ Download the SMS dataset from Kaggle and place it in the `data/` folder locally 
 
 [UC Irvine SMS Spam Collection Dataset from Kaggle](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
 
+### 5. Preprocess the data
+```bash
+python src/preprocess.py
+```
+
+### 6. Train the model
+```bash
+python src/model.py
+```
+
 ### Note:
 Keep in mind, every time you come back to work on this project, you need to reactivate the venv first: ```source venv/bin/activate ```
 
