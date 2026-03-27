@@ -21,12 +21,23 @@ def clean_text(text):
 
 def encode_labels(df):
     df["label"] = df["label"].map({"ham": 0, "spam": 1})
-    if df["label"].isnull().any():
-        raise ValueError("Found unknown labels after encoding.")
+    unknown = df[df["label"].isnull()]["label"]
+    if not unknown.empty:
+        raise ValueError(f"Found unknown labels at rows: {unknown.index.tolist()}")
     return df
 
 
 def remove_duplicates(df):
+    # If there are messages that appear to be both ham and spam:
+    conflicts = df[df.duplicated(subset="message", keep=False)]
+    conflicting = conflicts.groupby("message")["label"].nunique()
+    conflicting = conflicting[conflicting > 1]
+    if not conflicting.empty:
+        print(
+            f"Warning: {len(conflicting)} messages with conflicting labels — dropping all copies"
+        )
+        df = df[~df["message"].isin(conflicting.index)]
+
     before = len(df)
     df = df.drop_duplicates(subset="message")
     after = len(df)
@@ -50,7 +61,6 @@ def preprocess():
     save_processed(df)
     # For debugging, display if preprocessing is completed
     print("Preprocessing completed.")
-    return df
 
 
 if __name__ == "__main__":
