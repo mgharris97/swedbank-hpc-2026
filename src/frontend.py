@@ -355,6 +355,12 @@ if classify:
             """,
                 unsafe_allow_html=True,
             )
+        except requests.exceptions.Timeout:
+            # This error occurs when the API server takes too long to respond, which could indicate it's overloaded or there's a network issue.
+            st.markdown(
+                '<div class="err">Request timed out. The server might be overloaded.</div>',
+                unsafe_allow_html=True,
+            )
         except Exception as e:
             # Catch any other unexpected errors and display a generic error message.
             st.markdown(
