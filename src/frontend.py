@@ -259,3 +259,35 @@ st.markdown(
 """,
     unsafe_allow_html=True,
 )
+
+# === hero ===
+st.markdown(
+    """
+    <div class="hero">
+        <div class="hero-eyebrow">RTU · HPC Challenge 2026</div>
+        <div class="hero-title">SMS Fraud<br><em>Detection</em></div>
+        <div class="hero-sub">
+            Paste any SMS message below, and the model will analyze it <br>
+            to determine whether it appears to be spam and provide a <br>
+            confidence level for its assessment.
+        </div>
+    </div>
+    <hr class="rule"/>
+""",
+    unsafe_allow_html=True,
+)
+
+
+# === input ===
+message = st.text_area(
+    "message",
+    placeholder="Type or paste an SMS message here…",
+    height=130,
+    label_visibility="collapsed",
+)
+
+st.markdown("<div style='height:0.7rem'></div>", unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns([1.2, 1, 1.2])
+with col2:
+    classify = st.button("Analyse", use_container_width=True)
