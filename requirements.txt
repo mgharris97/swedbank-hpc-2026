@@ -7,3 +7,5 @@ joblib
 matplotlib
 seaborn
 wordcloud
+streamlit
+requests
