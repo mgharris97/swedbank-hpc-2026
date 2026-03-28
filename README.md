@@ -20,6 +20,8 @@ ML-powered SMS fraud detection system built with pandas, scikit-learn, fastAPI, 
 | FastAPI | API endpoint |
 | uvicorn | Server for running FastAPI |
 | joblib | Model serialization and loading |
+| streamlit | Creating the frontend |
+
 
 ## To set up on your end...
 
